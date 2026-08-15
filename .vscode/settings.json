@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "dataset/.generate": true
+  },
+  "search.exclude": {
+    "dataset/.generate": true
+  },
+  "chat.planAgent.defaultModel": "GPT-4o (copilot)",
+  "chat.agent.thinking.collapsedTools": "off",
+  "chat.mcp.access": "none"
+}
