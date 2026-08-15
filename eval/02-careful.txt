@@ -1,0 +1,28 @@
+I need one CSV file, claim.csv, at the repo root. One row per completed transaction.
+
+Columns, in this order: receipt_id, date, vendor, category, total, gst
+
+- receipt_id: as printed, unique
+- date: YYYY-MM-DD, the transaction date, not a print date
+- vendor: as printed, trimmed
+- category: meals, transport, equipment, accommodation, or other. Use the category that matches the source (source_01 is meals / equipment / other, source_02 is meals / accommodation / equipment, source_03 is transport, source_04 is mixed)
+- total: two decimal places, SGD, the amount actually paid. Include service charge, tip, and rounding.
+- gst: two decimal places, or empty. Empty when no GST was charged, or when the receipt is not a tax invoice (no GST registration number)
+
+Currency is SGD. GST is 9%. Claim period is 1 March 2026 through 31 July 2026.
+
+Source files: dataset/source_01.txt through dataset/source_04.txt. Records are split on a line of = characters. Do not use dataset/extra/ unless I ask. Do not copy dataset/claim.reference.csv.
+
+Watch for:
+- A reprint in source 01 is the same sale. Claim it once.
+- Same vendor and amount on two dates is two lunches, not a duplicate.
+- One taxi is in source 03 and again in source 04 with a rounded amount. Claim it once.
+- Source 01 totals already include GST. Source 02 adds GST on top of the subtotal.
+- A GST line without a GST Reg. No. is not a tax invoice. Leave gst empty.
+- Service charge and tip are part of total.
+- A VOID sale is not a row.
+- Loyalty points, AMOUNT TENDERED, CHANGE, and "you saved" are not the total.
+- If there is a rounding adjustment, total is the amount after rounding.
+- Source 04 writes one date as 03/04/2026. The rest of that file uses day/month. Use 2026-04-03.
+
+Read the four source files. Write claim.csv. Do not write a parse script. Do not run check.py.

@@ -1,0 +1,43 @@
+Write claim.csv at the repo root. One row per completed transaction. Do not write a parse script. Read dataset/source_01.txt, dataset/source_02.txt, dataset/source_03.txt, and dataset/source_04.txt. Split records on delimiter lines of = characters. Ignore dataset/extra/ and dataset/claim.reference.csv.
+
+Columns, in this exact order:
+receipt_id,date,vendor,category,total,gst
+
+Rules:
+
+receipt_id
+As printed. Unique. Source 04 ids are the scrawled refs (hawkers 3/4, taxi 27/3, PeakDesk 8/6, mrt Jun, usb hub, supper 4/7).
+
+date
+YYYY-MM-DD. Transaction date. 03/04/2026 is 2026-04-03 (the file also has 27/03/2026, so the convention is DD/MM).
+
+vendor
+As printed, whitespace trimmed. Do not strip PTE LTD.
+
+category by source, do not infer from the items:
+- source_01: meals, equipment, or other as the receipt implies (hawker/kopi/bistro = meals, Circuit Mart = equipment, Night Owl supermart = other)
+- source_02: meals, accommodation, or equipment as the receipt implies
+- source_03: transport
+- source_04: mixed (hawker/supper = meals, taxi/mrt = transport, usb hub = equipment, PeakDesk = other)
+
+total
+Amount actually paid, two decimals.
+- source_01: the TOTAL line. Inclusive of GST. Include SERVICE. Include ROUNDING ADJ (use the post-round TOTAL). Ignore AMOUNT TENDERED, CHANGE, LOYALTY PTS, YOU SAVED.
+- source_02: the email Total (subtotal plus GST). That is what was paid even if there is no GST Reg. No.
+- source_03: You paid. Include fare, surge, platform fee, tip, and promo (promo is negative).
+- source_04: the handwritten amount (12.5 means 12.50, S$18.00 means 18.00).
+
+gst
+Two decimals, or empty.
+- source_01 with GST REG and GST @9% (incl): gst is the printed inclusive GST figure.
+- source_01 with no GST REG and no GST line: leave gst empty.
+- source_02 with GST Reg. No.: gst is the printed GST 9% line.
+- source_02 with a GST 9% line but no GST Reg. No.: leave gst empty. Still keep total as the email Total.
+- source_03 and source_04: leave gst empty.
+
+Exclude
+- Any receipt marked VOID or REVERSAL.
+- The reprint copy of a sale (*** REPRINT - DUPLICATE COPY ***). Keep the original once.
+- The handwritten GoRide note that is the same 22 June taxi as HN-03 (source 04 "taxis 3/4" / goride 15). Keep HN-03 only.
+
+Do not run check.py. Just write claim.csv.
