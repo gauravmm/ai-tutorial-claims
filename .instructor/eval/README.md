@@ -25,6 +25,6 @@ Override: `EVAL_MODEL=opencode-go/deepseek-v4-flash ./.instructor/eval/run.sh`
 
 ## Prompts
 
-1. `01-starter.txt` — the shipped wrong prompt. Must go red. GST-both-ways, noise, tip.
-2. `02-careful.txt` — a student who read the traps but did not write formulas. The interesting case.
-3. `03-precise.txt` — names every trap and the rule. Should be green if the model can follow instructions.
+1. `01-starter.txt` - the shipped wrong prompt. Must go red. GST-both-ways, noise, tip.
+2. `02-careful.txt` - a student who read the traps but did not write formulas. The interesting case.
+3. `03-precise.txt` - names every trap and the rule. Should be green if the model can follow instructions.
