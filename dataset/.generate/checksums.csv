@@ -3,6 +3,9 @@ count_accommodation,2
 count_equipment,5
 count_meals,14
 count_other,3
+count_prefix_HN,8
+count_prefix_R,13
+count_prefix_TXN,7
 count_source_01,13
 count_source_02,7
 count_source_03,8

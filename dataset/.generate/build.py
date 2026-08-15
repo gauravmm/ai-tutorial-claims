@@ -44,6 +44,18 @@ def compute_checksums(rows: list[dict[str, str]]) -> dict[str, str]:
     checksums["sum_date_yyyymmdd"] = str(
         sum(int(r["date"].replace("-", "")) for r in rows)
     )
+    prefixes = Counter()
+    for row in rows:
+        rid = row["receipt_id"]
+        if rid.startswith("R-"):
+            prefixes["R"] += 1
+        elif rid.startswith("TXN"):
+            prefixes["TXN"] += 1
+        elif rid.startswith("HN-"):
+            prefixes["HN"] += 1
+    checksums["count_prefix_R"] = str(prefixes["R"])
+    checksums["count_prefix_TXN"] = str(prefixes["TXN"])
+    checksums["count_prefix_HN"] = str(prefixes["HN"])
     for src in (1, 2, 3, 4):
         src_rows = [r for r in rows if source_of(r["receipt_id"]) == src]
         checksums[f"count_source_{src:02d}"] = str(len(src_rows))

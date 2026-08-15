@@ -171,6 +171,19 @@ def level_checksums(rows: list[dict[str, str]], checksums: dict[str, str]) -> No
     got_dates = sum(int(r["date"].replace("-", "")) for r in rows)
     if str(got_dates) != checksums["sum_date_yyyymmdd"]:
         failures.append("dates")
+    prefixes = Counter()
+    for row in rows:
+        rid = row["receipt_id"].strip()
+        if rid.startswith("R-"):
+            prefixes["R"] += 1
+        elif rid.startswith("TXN"):
+            prefixes["TXN"] += 1
+        elif rid.startswith("HN-"):
+            prefixes["HN"] += 1
+    for prefix in ("R", "TXN", "HN"):
+        key = f"count_prefix_{prefix}"
+        if key in checksums and prefixes[prefix] != int(checksums[key]):
+            failures.append(f"printed {prefix} ids")
     if failures:
         raise CheckError(
             "Checksums failed: "
@@ -218,10 +231,16 @@ def _hint_for(source: int, metric: str, delta: float) -> str:
             f"{name}: your total is {abs(delta):.2f} low - is the tip part "
             "of what was paid?"
         )
+    if source == 3 and metric == "count" and delta < 0:
+        return (
+            f"{name}: missing printed ids - ride receipts show HN-03, HN-07, "
+            "and so on. Do not use the trip date or invent a GORIDE- id."
+        )
     if source == 4 and metric == "count" and delta > 0:
         return (
             f"{name}: extra row - one taxi also appears in source_03 with a "
-            "slightly rounded amount. Claim it once."
+            "slightly rounded amount. Claim it once. "
+            "If you renamed ride ids, put the printed HN- value back."
         )
     if source == 4 and metric == "date":
         return (
@@ -239,6 +258,29 @@ def _hint_for(source: int, metric: str, delta: float) -> str:
 
 def level_hints(rows: list[dict[str, str]], checksums: dict[str, str]) -> None:
     print("Level 4  per-source hints")
+    prefixes = Counter()
+    for row in rows:
+        rid = row["receipt_id"].strip()
+        if rid.startswith("R-"):
+            prefixes["R"] += 1
+        elif rid.startswith("TXN"):
+            prefixes["TXN"] += 1
+        elif rid.startswith("HN-"):
+            prefixes["HN"] += 1
+    prefix_problems: list[str] = []
+    hn_exp = int(checksums.get("count_prefix_HN", "0"))
+    if prefixes["HN"] != hn_exp:
+        prefix_problems.append(_hint_for(3, "count", float(prefixes["HN"] - hn_exp)))
+    if prefixes["R"] != int(checksums.get("count_prefix_R", "0")):
+        prefix_problems.append(
+            "source_01: receipt_id values must be the printed R- numbers."
+        )
+    if prefixes["TXN"] != int(checksums.get("count_prefix_TXN", "0")):
+        prefix_problems.append(
+            "source_02: receipt_id values must be the printed TXN numbers."
+        )
+    if prefix_problems:
+        raise CheckError("\n".join(prefix_problems))
     problems: list[str] = []
     for src in (1, 2, 3, 4):
         src_rows = [r for r in rows if source_of(r["receipt_id"]) == src]
