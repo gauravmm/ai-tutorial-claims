@@ -5,7 +5,7 @@ Instructor-only. These stand in for a student pasting into Copilot. The agent in
 Run with `opencode run`, not `opencode -p`. In this install, `-p` on `run` is a password flag. `opencode run` is the headless equivalent of `claude -p`.
 
 ```text
-./eval/run.sh
+./.instructor/eval/run.sh
 ```
 
 ## Model
@@ -21,7 +21,7 @@ This machine has no Raptor mini. We use the paid OpenCode Go endpoint.
 | `opencode-go/deepseek-v4-pro` | Too strong. A pass here does not mean a Free-tier student will pass. |
 | `opencode/hy3-free` | Free queue. Avoid unless Go is down. |
 
-Override: `EVAL_MODEL=opencode-go/deepseek-v4-flash ./eval/run.sh`
+Override: `EVAL_MODEL=opencode-go/deepseek-v4-flash ./.instructor/eval/run.sh`
 
 ## Prompts
 

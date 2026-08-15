@@ -1,6 +1,7 @@
 {
   "name": "Expense Claims",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "postCreateCommand": "bash .devcontainer/strip-instructor.sh",
   "customizations": {
     "vscode": {
       "extensions": ["ms-python.python"]

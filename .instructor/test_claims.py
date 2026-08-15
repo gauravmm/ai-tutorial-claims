@@ -9,11 +9,11 @@ import sys
 import tempfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-BUILD = ROOT / "dataset" / ".generate" / "build.py"
+ROOT = Path(__file__).resolve().parent.parent
+BUILD = ROOT / ".instructor" / "generate" / "build.py"
 CHECK = ROOT / "check.py"
 DATASET = ROOT / "dataset"
-GENERATE = ROOT / "dataset" / ".generate"
+GENERATE = ROOT / ".instructor" / "generate"
 
 TRACKED = (
     "source_01.txt",

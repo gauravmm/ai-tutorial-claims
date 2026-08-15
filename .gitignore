@@ -12,4 +12,4 @@ venv/
 claim.csv
 easter-egg/*
 !easter-egg/PROMPT.md
-eval/runs/
+.instructor/eval/runs/

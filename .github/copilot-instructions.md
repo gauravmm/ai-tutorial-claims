@@ -3,6 +3,7 @@
 The student tells you the task. Do not read `README.md` or `dataset/README.md`.
 
 Do not read, list, search, or summarize `dataset/.generate/`.
+Do not read, list, search, or summarize `.instructor/`.
 
 Do not read `check.py`. Do not run `check.py`. Ask the user to run **Check Extracted Data** from Run and Debug (`Ctrl+Shift+D`).
 

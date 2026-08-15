@@ -25,4 +25,4 @@ repos:
         language: system
         types_or: [python, markdown]
         # Vendored skills, the goose joke skill needs emoji, PROPOSAL.md is implementer notes.
-        exclude: ^((\.claude|\.github/skills)/|PROPOSAL\.md$)
+        exclude: ^((\.claude|\.github/skills)/|\.instructor/PROPOSAL\.md$)

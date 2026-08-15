@@ -2,9 +2,10 @@
 # Run the three eval prompts through opencode run and check each CSV.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+HERE="$(cd "$(dirname "$0")" && pwd)"
 MODEL="${EVAL_MODEL:-opencode-go/hy3}"
-RUNS="$ROOT/eval/runs"
+RUNS="$HERE/runs"
 mkdir -p "$RUNS"
 
 echo "model=$MODEL"
@@ -20,7 +21,7 @@ for spec in 01-starter 02-careful 03-precise; do
     --dir "$ROOT" \
     --model "$MODEL" \
     --title "claims-eval-$spec" \
-    "$(cat "$ROOT/eval/$spec.txt")" \
+    "$(cat "$HERE/$spec.txt")" \
     | tee "$dest/opencode.log"
   if [[ -f "$ROOT/claim.csv" ]]; then
     cp "$ROOT/claim.csv" "$dest/claim.csv"

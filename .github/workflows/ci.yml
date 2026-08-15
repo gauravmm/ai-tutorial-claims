@@ -15,4 +15,4 @@ jobs:
       # Runs ruff and pyright from .pre-commit-config.yaml, so versions live in one place.
       - uses: pre-commit/action@v3.0.1
       - name: Self-check
-        run: python3 test_claims.py
+        run: python3 .instructor/test_claims.py

@@ -143,7 +143,7 @@ def main() -> None:
     parser.add_argument(
         "--dataset",
         type=Path,
-        default=HERE.parent,
+        default=HERE.parent.parent / "dataset",
         help="Directory that receives source_0N.txt and claim.reference.csv",
     )
     args = parser.parse_args()

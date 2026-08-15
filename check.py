@@ -171,7 +171,7 @@ def level_checksums(rows: list[dict[str, str]], checksums: dict[str, str]) -> No
     got_dates = sum(int(r["date"].replace("-", "")) for r in rows)
     if str(got_dates) != checksums["sum_date_yyyymmdd"]:
         failures.append("dates")
-    prefixes = Counter()
+    prefixes: Counter[str] = Counter()
     for row in rows:
         rid = row["receipt_id"].strip()
         if rid.startswith("R-"):
@@ -258,7 +258,7 @@ def _hint_for(source: int, metric: str, delta: float) -> str:
 
 def level_hints(rows: list[dict[str, str]], checksums: dict[str, str]) -> None:
     print("Level 4  per-source hints")
-    prefixes = Counter()
+    prefixes: Counter[str] = Counter()
     for row in rows:
         rid = row["receipt_id"].strip()
         if rid.startswith("R-"):
