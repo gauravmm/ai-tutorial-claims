@@ -1,0 +1,11 @@
+{
+  "config": {
+    "MD013": false,
+    "MD033": false,
+    // Pin the table style. Left to infer, MD060 reads a table whose cells happen to
+    // line up as "aligned" and then demands padding in every other table.
+    "MD060": { "style": "compact" }
+  },
+  // Vendored markdown is not yours to reformat.
+  "ignores": [".claude/**"]
+}
