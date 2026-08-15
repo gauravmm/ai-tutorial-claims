@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-MODEL="${EVAL_MODEL:-opencode/hy3-free}"
+MODEL="${EVAL_MODEL:-opencode-go/hy3}"
 RUNS="$ROOT/eval/runs"
 mkdir -p "$RUNS"
 

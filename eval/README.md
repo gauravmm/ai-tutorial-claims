@@ -12,16 +12,16 @@ Run with `opencode run`, not `opencode -p`. In this install, `-p` on `run` is a 
 
 Workshop target is GitHub Copilot **Raptor mini** (a GPT-5-mini fine-tune, unlimited on Copilot Free).
 
-This machine has no Raptor mini. Closest cheap stand-ins:
+This machine has no Raptor mini. We use the paid OpenCode Go endpoint.
 
 | Id | Why |
 | --- | --- |
-| `opencode/hy3-free` | What we run. Free, small, named by you. A **lower bound** on Raptor mini. |
-| `opencode/deepseek-v4-flash-free` | Another small/fast free model. Try this if hy3 cannot even write a CSV. |
+| `opencode-go/hy3` | What we run. Paid Hunyuan 3. Fast enough, not as strong as v4 Pro. |
+| `opencode-go/deepseek-v4-flash` | Smaller/faster paid stand-in if hy3 is slow or too loose. |
 | `opencode-go/deepseek-v4-pro` | Too strong. A pass here does not mean a Free-tier student will pass. |
-| `opencode-go/hy3` | Paid hy3. Same family, more budget. |
+| `opencode/hy3-free` | Free queue. Avoid unless Go is down. |
 
-Override: `EVAL_MODEL=opencode/deepseek-v4-flash-free ./eval/run.sh`
+Override: `EVAL_MODEL=opencode-go/deepseek-v4-flash ./eval/run.sh`
 
 ## Prompts
 
