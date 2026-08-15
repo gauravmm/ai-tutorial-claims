@@ -10,6 +10,4 @@ venv/
 .mypy_cache/
 .coverage
 claim.csv
-easter-egg/*
-!easter-egg/PROMPT.md
 .instructor/eval/runs/

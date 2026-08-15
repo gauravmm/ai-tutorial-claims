@@ -4,11 +4,9 @@
 
 - Keep documents as short as possible.
 - Docs and comments carry only information that is not obvious, not innately discoverable from the code/repo, and not redundant with either.
-- Follow `.claude/skills/ste-writing` on every doc, comment and docstring you write or touch, not only when asked. Use the STE-flavored mode, and strict mode for error messages and procedures.
-- Follow `.claude/skills/terse-comments` on the same text. It decides what a comment says. `ste-writing` decides how the sentence reads.
 - No historical information (what changed, what it used to be, why something was rejected) in docs or comments unless specifically allowed. Git history keeps it discoverable.
 - Do not line-wrap markdown. Write one line per paragraph or bullet.
-- ASCII only in Python files, README.md and CLAUDE.md (pre-commit enforces this): no en/em dashes, curly quotes, or other Unicode gremlins. `.claude/` is exempt because it is vendored. `.github/skills/` is exempt because the goose joke skill needs emoji. `.instructor/PROPOSAL.md` is exempt because it is implementer notes.
+- ASCII only in Python files, README.md and CLAUDE.md (pre-commit enforces this): no en/em dashes, curly quotes, or other Unicode gremlins. `.github/skills/` is exempt because the goose joke skill needs emoji. `.instructor/PROPOSAL.md` is exempt because it is implementer notes.
 
 ## Layout
 
@@ -17,7 +15,7 @@
 - `.instructor/` is the instructor kit. A Codespace deletes it on create (`.devcontainer/strip-instructor.sh`). `dataset/.generate/` keeps only `checksums.csv` and `ground_truth.csv` so the student checker still runs.
 - Hide `dataset/.generate/` and `.instructor/` with `files.exclude` and `search.exclude`. Never put answers in student-facing files.
 - `claim.csv` is student output and is gitignored. `dataset/claim.reference.csv` is committed.
-- Goose art lives in a local `easter-egg/` folder (gitignored). The handoff prompt is `.instructor/easter-egg/PROMPT.md`.
+- The office-desk goose still is `.devcontainer/office-desk.jpg`. The student README hides it in a `details` block under stretch goals. Explorer hides the file.
 
 ## Workflow
 

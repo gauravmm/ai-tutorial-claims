@@ -19,7 +19,7 @@ dev = ["ruff>=0.16.3", "pyright>=1.1.411", "pre-commit>=4.6.2"]
 
 [tool.ruff]
 # Ruff formats Python blocks inside markdown, which rewrites quoted snippets.
-extend-exclude = ["*.md", ".claude"]
+extend-exclude = ["*.md"]
 
 [tool.ruff.lint]
 extend-select = ["I", "B", "UP"]

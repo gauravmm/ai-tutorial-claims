@@ -1,11 +1,13 @@
 {
   "files.exclude": {
     "dataset/.generate": true,
-    ".instructor": true
+    ".instructor": true,
+    ".devcontainer/office-desk.jpg": true
   },
   "search.exclude": {
     "dataset/.generate": true,
-    ".instructor": true
+    ".instructor": true,
+    ".devcontainer/office-desk.jpg": true
   },
   "chat.planAgent.defaultModel": "GPT-4o (copilot)",
   "chat.agent.thinking.collapsedTools": "off",

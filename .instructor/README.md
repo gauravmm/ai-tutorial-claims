@@ -13,7 +13,6 @@ A GitHub Codespace runs `.devcontainer/strip-instructor.sh` on create and delete
 | `generate/` | Receipt model, formatters, `build.py` |
 | `eval/` | Student-like prompts and `run.sh` |
 | `test_claims.py` | Regenerate-and-diff self-check |
-| `easter-egg/` | Goose art handoff |
 
 `check.py` still reads `dataset/.generate/checksums.csv` and `ground_truth.csv`. Those stay in the student tree, hidden, so Run and Debug works after this folder is gone.
 
