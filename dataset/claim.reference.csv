@@ -1,0 +1,35 @@
+receipt_id,date,vendor,category,total,gst
+R-1701,2026-06-03,AH HUAT CHICKEN RICE,meals,7.20,
+R-1042,2026-06-08,KOPI HOR PTE LTD,meals,18.50,1.53
+R-1210,2026-06-12,AH HUAT CHICKEN RICE,meals,8.30,0.69
+R-1188,2026-06-15,KOPI HOR PTE LTD,meals,18.50,1.53
+R-1301,2026-06-18,LITTLE PENINSULA BISTRO,meals,77.00,6.36
+R-1220,2026-06-20,NIGHT OWL SUPERMART,other,9.98,0.82
+R-1501,2026-06-22,MAXWELL STALL 14,meals,19.80,1.63
+R-1502,2026-06-22,KOPI HOR PTE LTD,meals,16.50,1.36
+R-1401,2026-06-25,CIRCUIT MART ELECTRONICS,equipment,450.00,37.16
+R-1702,2026-06-28,AH HUAT CHICKEN RICE,meals,9.40,
+R-1703,2026-07-02,NIGHT OWL SUPERMART,other,15.60,1.29
+R-1601,2026-07-08,LITTLE PENINSULA BISTRO,meals,37.50,3.10
+R-1704,2026-07-14,CIRCUIT MART ELECTRONICS,equipment,89.00,7.35
+TXN88410,2026-06-04,Orchard Stay Hotel,accommodation,239.80,19.80
+TXN88250,2026-06-11,Riverview Inn,accommodation,196.20,
+TXN88201,2026-06-19,Harbour View Cafe PTE LTD,meals,45.78,
+TXN88420,2026-06-27,Harbour View Cafe PTE LTD,meals,26.16,2.16
+TXN88300,2026-07-03,Harbour View Cafe PTE LTD,meals,30.52,2.52
+TXN89001,2026-07-05,Studio Kit House PTE LTD,equipment,1395.20,115.20
+TXN88430,2026-07-11,Byte Bazaar PTE LTD,equipment,170.04,14.04
+HN-21,2026-03-15,GoRide,transport,12.50,
+HN-12,2026-06-05,GoRide,transport,9.20,
+HN-07,2026-06-09,GoRide,transport,11.90,
+HN-14,2026-06-16,GoRide,transport,22.40,
+HN-03,2026-06-22,GoRide,transport,14.80,
+HN-08,2026-07-01,GoRide,transport,14.40,
+HN-16,2026-07-12,GoRide,transport,7.80,
+HN-18,2026-07-20,GoRide,transport,18.60,
+taxi 27/3,2026-03-27,taxi to client,transport,18.00,
+hawkers 3/4,2026-04-03,hawker lunch,meals,12.50,
+mrt Jun,2026-06-02,simplygo topup,transport,20.00,
+PeakDesk 8/6,2026-06-08,PeakDesk Co-Working,other,35.00,
+usb hub,2026-06-30,sim lim spare hub,equipment,16.00,
+supper 4/7,2026-07-04,prata 3am,meals,11.00,

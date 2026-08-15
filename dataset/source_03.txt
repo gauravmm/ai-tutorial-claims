@@ -1,0 +1,110 @@
+================================
+
+GoRide
+Trip completed  15 Mar 2026  08:05
+Pickup:  Redhill
+Dropoff: Tanjong Pagar
+--------------------------------
+Fare                       12.10
+Platform fee                0.40
+--------------------------------
+You paid                   12.50
+Charged to WALLET
+
+================================
+
+GoRide
+Trip completed  05 Jun 2026  09:10
+Pickup:  Outram Park
+Dropoff: Tanjong Pagar
+--------------------------------
+Fare                        8.80
+Platform fee                0.40
+--------------------------------
+You paid                    9.20
+Charged to WALLET
+
+================================
+
+GoRide
+Trip completed  09 Jun 2026  08:22
+Pickup:  Lavender MRT
+Dropoff: Raffles Place
+--------------------------------
+Fare                        8.50
+Platform fee                0.40
+Tip                         3.00
+--------------------------------
+You paid                   11.90
+Charged to WALLET
+
+================================
+
+GoRide
+Trip completed  16 Jun 2026  22:41
+Pickup:  Clarke Quay
+Dropoff: Serangoon
+--------------------------------
+Fare                       18.00
+Surge 1.2x                  4.00
+Platform fee                0.40
+--------------------------------
+You paid                   22.40
+Charged to WALLET
+
+================================
+
+GoRide
+Trip completed  22 Jun 2026  19:14
+Pickup:  1 Fusionopolis Way
+Dropoff: Tanjong Pagar MRT
+--------------------------------
+Fare                       11.20
+Surge 1.3x                  2.40
+Platform fee                0.40
+Tip                         2.00
+Promo                      -1.20
+--------------------------------
+You paid                   14.80
+Charged to WALLET
+
+================================
+
+GoRide
+Trip completed  01 Jul 2026  18:05
+Pickup:  HarbourFront
+Dropoff: Bugis Junction
+--------------------------------
+Fare                       15.00
+Surge 1.2x                  3.00
+Platform fee                0.40
+Promo                      -4.00
+--------------------------------
+You paid                   14.40
+Charged to VISA
+
+================================
+
+GoRide
+Trip completed  12 Jul 2026  10:33
+Pickup:  City Hall
+Dropoff: Bugis
+--------------------------------
+Fare                        7.40
+Platform fee                0.40
+--------------------------------
+You paid                    7.80
+Charged to WALLET
+
+================================
+
+GoRide
+Trip completed  20 Jul 2026  17:55
+Pickup:  Paya Lebar
+Dropoff: Raffles Place
+--------------------------------
+Fare                       18.20
+Platform fee                0.40
+--------------------------------
+You paid                   18.60
+Charged to WALLET
