@@ -106,6 +106,7 @@ These are outside the scope of the workshop. Come back to them on your own time 
 
 1. **Explain your prompt.** Annotate each sentence in your final prompt with a comment. Say what failure mode it guards against.
 2. **Review skill.** There is a review skill in the repo. Decide whether you trust it.
+3. **Extra source.** If you finish early, look in `dataset/extra/`.
 
 <details>
 <summary>Finance would like a word</summary>
@@ -113,5 +114,3 @@ These are outside the scope of the workshop. Come back to them on your own time 
 ![peace was never an option](.devcontainer/office-desk.jpg)
 
 </details>
-
-3. **Extra source.** If you finish early, look in `dataset/extra/`.
