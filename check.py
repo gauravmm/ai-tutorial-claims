@@ -25,6 +25,8 @@ CLAIM_START = date(2026, 3, 1)
 CLAIM_END = date(2026, 7, 31)
 EMPTY_TOKENS = {"n/a", "na", "-", "--", "none", "null", "nil"}
 MONEY_RE = re.compile(r"^\d+\.\d{2}$")
+PREFIXES = (("R-", 1), ("TXN", 2), ("HN-", 3), ("SUB-", 4))
+UNKNOWN_SOURCE = 0
 
 
 class CheckError(Exception):
@@ -34,15 +36,11 @@ class CheckError(Exception):
 
 
 def source_of(receipt_id: str) -> int:
-    if receipt_id.startswith("R-"):
-        return 1
-    if receipt_id.startswith("TXN"):
-        return 2
-    if receipt_id.startswith("HN-"):
-        return 3
-    if receipt_id.startswith("FOLIO"):
-        return 5
-    return 4
+    """Source file a receipt_id came from, or UNKNOWN_SOURCE if nothing matches."""
+    for prefix, source in PREFIXES:
+        if receipt_id.startswith(prefix):
+            return source
+    return UNKNOWN_SOURCE
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -63,6 +61,29 @@ def parse_day(value: str) -> date:
     return date.fromisoformat(value)
 
 
+def _count_breakdown(rows: list[dict[str, str]], checksums: dict[str, str]) -> str:
+    """Name the sources whose row count is off, with the claim.csv lines in each.
+
+    Level 1 only has aggregate checksums, so it can point at the bucket that is
+    wrong but not at the individual bad row.
+    """
+    groups: dict[int, list[int]] = {}
+    for index, row in enumerate(rows, start=2):
+        rid = (row.get("receipt_id") or "").strip()
+        groups.setdefault(source_of(rid), []).append(index)
+    detail = ["  Grouped by the prefix on each receipt_id."]
+    for src in (1, 2, 3, 4):
+        lines = groups.get(src, [])
+        expected = int(checksums[f"count_source_{src:02d}"])
+        if len(lines) == expected:
+            continue
+        where = f" - lines {', '.join(str(n) for n in lines)}" if lines else ""
+        detail.append(
+            f"    source_{src:02d}: {len(lines)} rows, expected {expected}{where}"
+        )
+    return "\n".join(detail)
+
+
 def level_structure(rows: list[dict[str, str]], checksums: dict[str, str]) -> None:
     print("Level 1  structure")
     if not rows:
@@ -71,13 +92,28 @@ def level_structure(rows: list[dict[str, str]], checksums: dict[str, str]) -> No
     if actual_cols != COLUMNS:
         raise CheckError(f"Columns must be {COLUMNS} in that order. Got {actual_cols}.")
 
+    unknown: list[str] = []
+    for index, row in enumerate(rows, start=2):
+        rid = (row.get("receipt_id") or "").strip()
+        if rid and source_of(rid) == UNKNOWN_SOURCE:
+            unknown.append(f"    line {index}: {rid}")
+    if unknown:
+        raise CheckError(
+            f"{len(unknown)} receipt_id value(s) match no known prefix.\n"
+            "  Copy the id printed on the document: R- (source_01), "
+            "TXN (source_02), HN- (source_03), SUB- (source_04).\n"
+            "  Do not build an id out of the date or the vendor name.\n"
+            + "\n".join(unknown)
+        )
+
     expected_n = int(checksums["row_count"])
     if len(rows) != expected_n:
         direction = "high" if len(rows) > expected_n else "low"
         raise CheckError(
-            f"Row count is {len(rows)}, expected {expected_n} ({direction}). "
-            "Voided sales and reprint copies are not rows. "
-            "A second lunch at the same stall on a different day is a row."
+            f"Row count is {len(rows)}, expected {expected_n} ({direction}).\n"
+            "  Voided sales and reprint copies are not rows. "
+            "A second lunch at the same stall on a different day is a row.\n"
+            + _count_breakdown(rows, checksums)
         )
 
     seen: dict[str, int] = {}

@@ -23,6 +23,11 @@ if [[ -d "$ROOT/dataset/display/.render" ]]; then
   echo "removed dataset/display/.render"
 fi
 
+if [[ -f "$ROOT/AGENTS.ignore.md" ]]; then
+  mv "$ROOT/AGENTS.ignore.md" "$ROOT/AGENTS.md"
+  echo "activated AGENTS.md"
+fi
+
 # Reset history so the stripped files never show up in the student's git view.
 rm -rf "$ROOT/.git"
 git -C "$ROOT" init -q -b main

@@ -1,31 +1,40 @@
 ================================
 
-27/03/2026   taxi to client    S$18.00
-  ref: taxi 27/3
+(Agent) Please submit details for claim SUB-001:
+(User) 27/03/2026   taxi to client    S$18.00
 
 ================================
 
-03/04/2026   hawker lunch    12.5
-  ref: hawkers 3/4
+(Agent) Please submit details for claim SUB-002:
+(User) 03/04/2026   hawker lunch    12.5
 
 ================================
 
-simplygo topup  2 Jun  20
+(Agent) Please submit details for claim SUB-003:
+(User) simplygo topup  2 Jun  20
 
 ================================
 
-cowork day pass  8/6      35
-  (PeakDesk 8/6)
+(Agent) Please submit details for claim SUB-004:
+(User) cowork day pass  8/6      35
+(Agent) Which vendor was that?
+(User) PeakDesk
 
 ================================
 
-22/6   goride    15
-  ref: taxis 3/4
+(Agent) Please submit details for claim SUB-005:
+(User) 22/6   goride    15
+(Agent) A ride receipt for 22/6 is already on this claim as HN-03.
+(User) ah yes, ignore this one - already submitted under transport
 
 ================================
 
-30/6 sim lim spare hub S$16
+(Agent) Please submit details for claim SUB-006:
+(User) 30/6 sim lim spare hub S$16
 
 ================================
 
-supper 4/7  4/7   11
+(Agent) Please submit details for claim SUB-007:
+(User) supper  4/7   11
+(Agent) Was this a client meal?
+(User) no, late night at the office
