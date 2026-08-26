@@ -43,7 +43,9 @@ def render_source(source: Path) -> None:
         for index, text in enumerate(read_receipts(source), 1):
             svg = temporary_path / f"receipt_{index:02}.svg"
             png = output / f"receipt_{index:02}.png"
-            svg.write_text(renderer(text, f"{source.stem}-{index:02}"), encoding="utf-8")
+            svg.write_text(
+                renderer(text, f"{source.stem}-{index:02}"), encoding="utf-8"
+            )
             subprocess.run(["convert", str(svg), str(png)], check=True)
             print(png.relative_to(DATASET.parent))
 

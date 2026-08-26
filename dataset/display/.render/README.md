@@ -9,7 +9,7 @@
 - `source_03.py`: colorful GoRide app screenshots with a route map, pickup/drop-off timeline, fare breakdown, total, and payment status.
 - `source_04.py`: messaging-app screenshots with the source note in an outgoing chat bubble.
 
-The dispatcher reads the selected source file, splits it at receipt boundaries, passes each block to its renderer, and rasterizes the returned SVG to a 900 × 1200 PNG with ImageMagick. Source 01's seed is derived from the source and receipt number, so its wear remains reproducible.
+The dispatcher reads the selected source file, splits it at receipt boundaries, passes each block to its renderer, and rasterizes the returned SVG to a 900 x 1200 PNG with ImageMagick. Source 01's seed is derived from the source and receipt number, so its wear remains reproducible.
 
 Run all matching sources:
 
