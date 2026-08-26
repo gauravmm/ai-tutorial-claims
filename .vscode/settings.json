@@ -5,6 +5,7 @@
     "**/.venv": true,
     "**/__pycache__": true,
     "**/.render": true,
+    "dataset/.generate": true,
     ".devcontainer/office-desk.jpg": true
   },
   "search.exclude": {
@@ -13,6 +14,7 @@
     "**/.venv": true,
     "**/__pycache__": true,
     "**/.render": true,
+    "dataset/.generate": true,
     ".devcontainer/office-desk.jpg": true
   },
   "chat.planAgent.defaultModel": "GPT-4o (copilot)",
