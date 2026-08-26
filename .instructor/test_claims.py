@@ -19,8 +19,6 @@ TRACKED = (
     "source_01.txt",
     "source_02.txt",
     "source_03.txt",
-    "source_04.txt",
-    "extra/source_05.txt",
     "claim.reference.csv",
     ".generate/ground_truth.csv",
     ".generate/checksums.csv",
@@ -60,6 +58,20 @@ def test_regenerate() -> None:
             assert committed == generated, f"drift in {rel}"
 
 
+def test_handwritten_sources() -> None:
+    """Sources 04 and 05 are hand-authored, so nothing regenerates their text."""
+    sys.path.insert(0, str(ROOT))
+    from check import source_of
+
+    text = (DATASET / "source_04.txt").read_text()
+    for row in csv.DictReader((DATASET / "claim.reference.csv").open()):
+        rid = row["receipt_id"]
+        if source_of(rid) != 4:
+            continue
+        assert rid in text, f"{rid} is in the CSVs but not in source_04.txt"
+        assert row["vendor"] in text, f"vendor for {rid} is not in source_04.txt"
+
+
 def test_reference_checks() -> None:
     proc = _run_check("--csv-file", str(DATASET / "claim.reference.csv"), "--verbose")
     assert proc.returncode == 0, proc.stdout + proc.stderr
@@ -77,7 +89,7 @@ def test_missing_csv() -> None:
 def test_wrong_date_hints() -> None:
     rows = list(csv.DictReader((DATASET / "claim.reference.csv").open()))
     for row in rows:
-        if row["receipt_id"] == "hawkers 3/4":
+        if row["receipt_id"] == "SUB-002":
             row["date"] = "2026-03-04"
             break
     with tempfile.NamedTemporaryFile(
@@ -115,6 +127,7 @@ def test_filled_gst_without_reg_hints() -> None:
 if __name__ == "__main__":
     test_gst_inclusive()
     test_regenerate()
+    test_handwritten_sources()
     test_reference_checks()
     test_missing_csv()
     test_wrong_date_hints()

@@ -136,41 +136,8 @@ def format_ride(receipt: Receipt) -> str:
     return "\n".join(lines)
 
 
-def format_note(receipt: Receipt) -> str:
-    day = receipt.date_printed or _dmy(receipt.date)
-    amount = receipt.amount_printed or fmt_money(receipt.paid)
-    # Spacing is intentionally uneven. That is the source 04 look.
-    if receipt.receipt_id in {"hawkers 3/4", "taxis 3/4", "taxi 27/3"}:
-        return f"{day}   {receipt.vendor}    {amount}\n  ref: {receipt.receipt_id}"
-    if receipt.receipt_id == "PeakDesk 8/6":
-        return f"cowork day pass  {day}      {amount}\n  ({receipt.receipt_id})"
-    if receipt.receipt_id == "mrt Jun":
-        return f"{receipt.vendor}  {day}  {amount}"
-    if receipt.receipt_id == "usb hub":
-        return f"{day} {receipt.vendor} {amount}"
-    return f"{receipt.receipt_id}  {day}   {amount}"
-
-
-def format_folio(receipt: Receipt) -> str:
-    lines = [
-        "RIVERVIEW INN  --  GUEST FOLIO",
-        receipt.address,
-        f"Folio {receipt.receipt_id}    arrival {receipt.date.strftime('%d %b %Y')}",
-        f"GST Reg. No.: {receipt.gst_reg}" if receipt.gst_reg else "",
-        "-" * 36,
-    ]
-    for item in receipt.items:
-        lines.append(_width(item.desc, fmt_money(item.amount), 36))
-    lines.append("-" * 36)
-    lines.append(_width("Balance due", fmt_money(receipt.paid), 36))
-    lines.append(f"Settled {receipt.payment}")
-    return "\n".join(line for line in lines if line)
-
-
 FORMATTERS = {
     1: format_thermal,
     2: format_email,
     3: format_ride,
-    4: format_note,
-    5: format_folio,
 }

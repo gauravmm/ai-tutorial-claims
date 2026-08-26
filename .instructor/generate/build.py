@@ -16,6 +16,11 @@ from generate import COLUMNS, Receipt, fmt_money, planted
 
 DELIM = "\n" + ("=" * 32) + "\n\n"
 
+# Sources whose text is hand-authored: a chat thread and a set of out-of-scope
+# documents are prose, not something the Receipt model can render. Their rows
+# still live in planted() so the CSVs stay derived.
+HANDWRITTEN = frozenset({4, 5})
+
 
 def source_path(dataset: Path, source: int) -> Path:
     if source == 5:
@@ -86,7 +91,7 @@ def source_of(receipt_id: str) -> int:
 def write_csv(path: Path, rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(COLUMNS))
+        writer = csv.DictWriter(handle, fieldnames=list(COLUMNS), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -98,6 +103,8 @@ def build(dataset: Path) -> None:
         by_source[receipt.source].append(receipt)
 
     for source, group in by_source.items():
+        if source in HANDWRITTEN:
+            continue
         # Date order, with the reprint of R-1042 kept immediately after the original.
         if source == 1:
             original = [r for r in group if "reprint" not in r.flags]
@@ -131,7 +138,7 @@ def build(dataset: Path) -> None:
     checksums = compute_checksums(gt_rows)
     ck_path = generate_dir / "checksums.csv"
     with ck_path.open("w", newline="") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["metric", "value"])
         for key in sorted(checksums):
             writer.writerow([key, checksums[key]])

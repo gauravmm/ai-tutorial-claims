@@ -675,7 +675,7 @@ def planted() -> list[Receipt]:
     # source 04 -- handwritten. 03/04/2026 is 3 April. 27/03/2026 is the DD/MM tell.
     rows.append(
         make(
-            "hawkers 3/4",
+            "SUB-002",
             date(2026, 4, 3),
             "hawker lunch",
             "meals",
@@ -690,7 +690,7 @@ def planted() -> list[Receipt]:
     )
     rows.append(
         make(
-            "taxi 27/3",
+            "SUB-001",
             date(2026, 3, 27),
             "taxi to client",
             "transport",
@@ -705,7 +705,7 @@ def planted() -> list[Receipt]:
     )
     rows.append(
         make(
-            "taxis 3/4",
+            "SUB-005",
             date(2026, 6, 22),
             "goride",
             "transport",
@@ -720,9 +720,9 @@ def planted() -> list[Receipt]:
     )
     rows.append(
         make(
-            "PeakDesk 8/6",
+            "SUB-004",
             date(2026, 6, 8),
-            "PeakDesk Co-Working",
+            "PeakDesk",
             "other",
             4,
             [_item("day pass", "35.00")],
@@ -735,7 +735,7 @@ def planted() -> list[Receipt]:
     )
     rows.append(
         make(
-            "mrt Jun",
+            "SUB-003",
             date(2026, 6, 2),
             "simplygo topup",
             "transport",
@@ -749,7 +749,7 @@ def planted() -> list[Receipt]:
     )
     rows.append(
         make(
-            "usb hub",
+            "SUB-006",
             date(2026, 6, 30),
             "sim lim spare hub",
             "equipment",
@@ -763,9 +763,9 @@ def planted() -> list[Receipt]:
     )
     rows.append(
         make(
-            "supper 4/7",
+            "SUB-007",
             date(2026, 7, 4),
-            "prata 3am",
+            "supper",
             "meals",
             4,
             [_item("prata", "11.00")],
