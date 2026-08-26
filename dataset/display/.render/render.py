@@ -14,7 +14,6 @@ from source_02 import render as render_02
 from source_03 import render as render_03
 from source_04 import render as render_04
 
-
 DISPLAY = Path(__file__).resolve().parent.parent
 DATASET = DISPLAY.parent
 RENDERERS = {

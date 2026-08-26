@@ -1,5 +1,8 @@
 {
   "files.exclude": {
+    "**/.github": true,
+    "**/.ruff_cache": true,
+    "**/.venv": true,
     "**/__pycache__": true,
     "**/.render": true,
     "dataset/.generate": true,
@@ -7,6 +10,9 @@
     ".devcontainer/office-desk.jpg": true
   },
   "search.exclude": {
+    "**/.github": true,
+    "**/.ruff_cache": true,
+    "**/.venv": true,
     "**/__pycache__": true,
     "**/.render": true,
     "dataset/.generate": true,
