@@ -11,3 +11,56 @@ GST 9%                         30.42
 ------------------------------------
 Balance due                   368.42
 Settled VISA
+
+================================
+
+ORCHARD STAY HOTEL  --  GUEST FOLIO
+443 Orchard Road
+Folio FOLIO-27    arrival 09 Aug 2026
+GST Reg. No.: 199704422M
+------------------------------------
+Room 09-11 Aug                412.00
+Breakfast x2                   36.00
+GST 9%                         40.32
+------------------------------------
+Balance due                   488.32
+Settled VISA
+
+================================
+
+STUDIO KIT HOUSE PTE LTD
+Quotation QT-4471          02 Jul 2026
+GST Reg. No.: 200812277K
+------------------------------------
+Field recorder kit           1280.00
+GST 9%                        115.20
+------------------------------------
+Quoted total                 1395.20
+Valid 30 days.
+THIS IS A QUOTATION, NOT A TAX INVOICE.
+No payment has been received.
+
+================================
+
+BYTE BAZAAR PTE LTD
+Credit Note CN-0192        18 Jul 2026
+GST Reg. No.: 201422119E
+------------------------------------
+Returned: USB-C dock          -78.00
+GST 9%                         -7.02
+------------------------------------
+Credited to VISA              -85.02
+Refund against invoice TXN88430.
+
+================================
+
+HARBOUR VIEW CAFE PTE LTD
+Tax Invoice INV-70233      21 Jun 2026
+GST Reg. No.: 201188330C
+Bill to: Priya R (Design)
+------------------------------------
+Team lunch x6                 214.00
+GST 9%                         19.26
+------------------------------------
+Total                         233.26
+Charged to the Design cost centre.

@@ -25,8 +25,19 @@ CLAIM_START = date(2026, 3, 1)
 CLAIM_END = date(2026, 7, 31)
 EMPTY_TOKENS = {"n/a", "na", "-", "--", "none", "null", "nil"}
 MONEY_RE = re.compile(r"^\d+\.\d{2}$")
-PREFIXES = (("R-", 1), ("TXN", 2), ("HN-", 3), ("SUB-", 4))
+PREFIXES = (
+    ("R-", 1),
+    ("TXN", 2),
+    ("HN-", 3),
+    ("SUB-", 4),
+    ("FOLIO", 5),
+    ("QT-", 5),
+    ("CN-", 5),
+    ("INV-", 5),
+)
 UNKNOWN_SOURCE = 0
+# Real documents that are deliberately out of scope for this claim.
+EXTRA_SOURCES = {5: "dataset/extra/source_05.txt"}
 
 
 class CheckError(Exception):
@@ -92,11 +103,24 @@ def level_structure(rows: list[dict[str, str]], checksums: dict[str, str]) -> No
     if actual_cols != COLUMNS:
         raise CheckError(f"Columns must be {COLUMNS} in that order. Got {actual_cols}.")
 
+    extra: list[str] = []
     unknown: list[str] = []
     for index, row in enumerate(rows, start=2):
         rid = (row.get("receipt_id") or "").strip()
-        if rid and source_of(rid) == UNKNOWN_SOURCE:
+        if not rid:
+            continue
+        source = source_of(rid)
+        if source in EXTRA_SOURCES:
+            extra.append(f"    line {index}: {rid} ({EXTRA_SOURCES[source]})")
+        elif source == UNKNOWN_SOURCE:
             unknown.append(f"    line {index}: {rid}")
+    if extra:
+        raise CheckError(
+            f"{len(extra)} row(s) come from a document outside this claim.\n"
+            "  Only the source files directly in dataset/ are in scope. "
+            "A document in dataset/extra/ is not, however well it reads.\n"
+            + "\n".join(extra)
+        )
     if unknown:
         raise CheckError(
             f"{len(unknown)} receipt_id value(s) match no known prefix.\n"
