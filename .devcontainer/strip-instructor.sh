@@ -17,3 +17,8 @@ if [[ -d "$ROOT/.instructor" ]]; then
   rm -rf "$ROOT/.instructor"
   echo "removed .instructor"
 fi
+
+if [[ -d "$ROOT/dataset/display/.render" ]]; then
+  rm -rf "$ROOT/dataset/display/.render"
+  echo "removed dataset/display/.render"
+fi
