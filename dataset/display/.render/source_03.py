@@ -9,6 +9,7 @@ def render(text: str, _seed: str) -> str:
     details = [line for line in lines[5:] if line != "-" * 32]
     paid = next(line for line in details if line.startswith("You paid"))
     payment = next(line for line in details if line.startswith("Charged to"))
+    ride_id = next(line for line in details if line.startswith("Trip ID"))
     charges = details[: details.index(paid)]
     paid_label, paid_amount = paid.rsplit(None, 1)
     charge_nodes = []
@@ -30,7 +31,7 @@ def render(text: str, _seed: str) -> str:
 <text x="62" y="118" class="sans" font-size="39" font-weight="800" fill="#fff">GoRide</text><rect x="62" y="145" width="176" height="40" rx="20" fill="#fff" opacity=".18"/><path d="M78 164l5 5 9-11" fill="none" stroke="#fff" stroke-width="3"/><text x="101" y="171" class="sans" font-size="16" font-weight="700" fill="#fff">TRIP COMPLETE</text>
 <circle cx="210" cy="273" r="16" fill="#fff"/><circle cx="210" cy="273" r="7" fill="#ff6b68"/><circle cx="650" cy="245" r="18" fill="#fff"/><rect x="644" y="239" width="12" height="12" rx="2" fill="#25324a"/><path d="M226 271 C350 190 490 330 632 248" fill="none" stroke="#25324a" stroke-width="5" stroke-dasharray="9 10"/>
 <path d="M0 395 Q0 365 30 365 H870 Q900 365 900 395 V1200 H0Z" fill="#fff"/>
-<text x="62" y="445" class="sans" font-size="13" font-weight="700" letter-spacing="2" fill="#0b8b83">TRIP RECEIPT</text><text x="62" y="490" class="sans" font-size="22" font-weight="700" fill="#202936">{html.escape(trip)}</text>
+<text x="62" y="445" class="sans" font-size="13" font-weight="700" letter-spacing="2" fill="#0b8b83">TRIP RECEIPT</text><text x="838" y="445" text-anchor="end" class="sans" font-size="15" font-weight="700" letter-spacing="1" fill="#8c9aa6">{html.escape(ride_id.upper())}</text><text x="62" y="490" class="sans" font-size="22" font-weight="700" fill="#202936">{html.escape(trip)}</text>
 <line x1="85" y1="535" x2="85" y2="625" stroke="#bed1d0" stroke-width="4"/><circle cx="85" cy="535" r="10" fill="#ff6b68"/><circle cx="85" cy="625" r="10" fill="#0b8b83"/>
 <text x="115" y="542" class="sans" font-size="19" fill="#202936">{html.escape(pickup)}</text><text x="115" y="632" class="sans" font-size="19" fill="#202936">{html.escape(dropoff)}</text>
 <line x1="62" y1="660" x2="838" y2="660" stroke="#e4e8eb"/>{"".join(charge_nodes)}

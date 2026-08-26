@@ -133,6 +133,7 @@ def format_ride(receipt: Receipt) -> str:
     lines.append("-" * 32)
     lines.append(_width("You paid", fmt_money(receipt.paid)))
     lines.append(f"Charged to {receipt.payment}")
+    lines.append(f"Trip ID {receipt.receipt_id}")
     return "\n".join(lines)
 
 

@@ -10,6 +10,7 @@ Platform fee                0.40
 --------------------------------
 You paid                   12.50
 Charged to WALLET
+Trip ID HN-21
 
 ================================
 
@@ -23,6 +24,7 @@ Platform fee                0.40
 --------------------------------
 You paid                    9.20
 Charged to WALLET
+Trip ID HN-12
 
 ================================
 
@@ -37,6 +39,7 @@ Tip                         3.00
 --------------------------------
 You paid                   11.90
 Charged to WALLET
+Trip ID HN-07
 
 ================================
 
@@ -51,6 +54,7 @@ Platform fee                0.40
 --------------------------------
 You paid                   22.40
 Charged to WALLET
+Trip ID HN-14
 
 ================================
 
@@ -67,6 +71,7 @@ Promo                      -1.20
 --------------------------------
 You paid                   14.80
 Charged to WALLET
+Trip ID HN-03
 
 ================================
 
@@ -82,6 +87,7 @@ Promo                      -4.00
 --------------------------------
 You paid                   14.40
 Charged to VISA
+Trip ID HN-08
 
 ================================
 
@@ -95,6 +101,7 @@ Platform fee                0.40
 --------------------------------
 You paid                    7.80
 Charged to WALLET
+Trip ID HN-16
 
 ================================
 
@@ -108,3 +115,4 @@ Platform fee                0.40
 --------------------------------
 You paid                   18.60
 Charged to WALLET
+Trip ID HN-18
